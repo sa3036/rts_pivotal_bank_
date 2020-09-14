@@ -32,7 +32,7 @@ public class QuoteService {
 	protected String company_url;
 
 	//TODO: Remove API KEY
-	@Value("${pivotal.quotes.alpha_advantage_rest_query}")
+	// @Value("${pivotal.quotes.alpha_advantage_rest_query}")
 	protected String alpha_advantage_url = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols={symbols}&apikey=B1SQNYULIQ8J9X2A";
 
 	public static final String FMT = "json";

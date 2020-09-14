@@ -45,7 +45,7 @@ public class PortfolioService {
 	QuoteRemoteCallService quoteService;
 
 	@Autowired
-	@LoadBalanced
+	  //@LoadBalanced
 	private RestTemplate restTemplate;
 
 	@Autowired

@@ -1,0 +1,51 @@
+# spring:
+# #  profiles.active: local
+#   application:
+#      name: web-service
+# info:
+#   build:
+#     group: ${group}
+#     name: ${name}
+#     description: ${description}
+#     version: ${version}
+
+spring:
+  application:
+     name: web-service
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+    service-registry:
+      auto-registration:
+        enabled: false
+
+hystrix:
+  metrics:
+    enabled: false
+
+eureka:
+  client:
+    enabled: false
+
+
+pivotal:
+  summary:
+    quotes: 3
+    symbols:
+      it: ORCL,IBM,INTC,AMD,HPQ,CSCO,AAPL
+      fs: JPM,C,MS,BAC,GS,WFC,BK
+
+  quotesService:
+      name: quotes-service:8080
+  accountsService:
+      name: accounts-service:8080
+  analyticsService:
+      name: analytics-service:8080
+  portfolioService:
+      name: portfolio-service:8080
+  userService:
+      name: users-service:8080

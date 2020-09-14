@@ -1,0 +1,487 @@
+for one test_login  13.51 in total (test takes only 2.16)
+
+
+Without any change
+-------------------------------------------------------------------------------
+Test set: e2e.End2EndTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 41.327 s - in e2e.End2EndTest
+
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="5.778"/>
+  <testcase name="test_user_registration" classname="e2e.End2EndTest" time="3.7"/>
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="3.668"/>
+  <testcase name="test_user_portfolio_check" classname="e2e.End2EndTest" time="2.35"/>
+  <testcase name="test_user_account_creation_initialization" classname="e2e.End2EndTest" time="3.392"/>
+  <testcase name="test_user_accounts_details" classname="e2e.End2EndTest" time="2.27"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="3.391"/>
+  <testcase name="test_user_login" classname="e2e.End2EndTest" time="2.831"/>
+  <testcase name="test_user_trading_page" classname="e2e.End2EndTest" time="3.892"/>
+  <testcase name="test_user_home_page" classname="e2e.End2EndTest" time="2.901"/>
+  <testcase name="test_login" classname="e2e.End2EndTest" time="1.06"/>
+
+
+-------------------------------------------------------------------------
+
+Retest all with resgression:
+-------------------------------------------------------------------------------
+Test set: e2e.End2EndTest
+-------------------------------------------------------------------------------
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 104.936 s - in e2e.End2EndTest
+
+<testcase name="test_buy_shares" classname="e2e.End2EndTest" time="5.661"/>
+  <testcase name="test_user_registration" classname="e2e.End2EndTest" time="3.785"/>
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="7.404"/>
+  <testcase name="test_user_portfolio_check" classname="e2e.End2EndTest" time="2.976"/>
+  <testcase name="test_user_account_creation_initialization" classname="e2e.End2EndTest" time="5.025"/>
+  <testcase name="test_user_accounts_details" classname="e2e.End2EndTest" time="2.95"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="4.118"/>
+  <testcase name="test_user_login" classname="e2e.End2EndTest" time="8.661"/>
+  <testcase name="test_user_trading_page" classname="e2e.End2EndTest" time="2.999"/>
+  <testcase name="test_user_home_page" classname="e2e.End2EndTest" time="3.512"/>
+  <testcase name="test_login" classname="e2e.End2EndTest" time="1.289"/>
+
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 104.936 s - in e2e.End2EndTest
+
+
+
+RetestAll with RTS
+--------------------------
+1 --> 
+Time spent in analysing dependencies changes for all tests is -->5068
+Parsing 83
+Ekstazi 323
+
+collection - 
+
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_buy_shares is -->2311
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_buy_shares is -->1118
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_registration is -->770
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_registration is -->971
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->827
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->938
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_portfolio_check is -->393
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_portfolio_check is -->578
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_initialization is -->330
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_initialization is -->879
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_accounts_details is -->355
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_accounts_details is -->453
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_get_quotes is -->397
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_get_quotes is -->1004
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_login is -->360
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_login is -->595
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_trading_page is -->346
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_trading_page is -->800
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_home_page is -->499
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_home_page is -->559
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_login is -->304
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_login is -->254
+
+-----------------------------
+
+2 --> 
+
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 75.457 s - in e2e.End2EndTest
+
+Time spent in analysing dependencies changes for all tests is -->5068
+Time spent in TestParserMojo in finding test methods:--> 83
+Time spent in DynamicSelectEkstaziMojo :--> 323
+
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_buy_shares is -->2311
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_buy_shares is -->1118
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_registration is -->770
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_registration is -->971
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->827
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->938
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_portfolio_check is -->393
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_portfolio_check is -->578
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_initialization is -->330
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_initialization is -->879
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_accounts_details is -->355
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_accounts_details is -->453
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_get_quotes is -->397
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_get_quotes is -->1004
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_login is -->360
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_login is -->595
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_trading_page is -->346
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_trading_page is -->800
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_home_page is -->499
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_home_page is -->559
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_login is -->304
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_login is -->254
+
+---------------------
+
+3. -->
+
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 71.12 s - in e2e.End2EndTest
+
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="6.215"/>
+  <testcase name="test_user_registration" classname="e2e.End2EndTest" time="3.457"/>
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="4.499"/>
+  <testcase name="test_user_portfolio_check" classname="e2e.End2EndTest" time="4.489"/>
+  <testcase name="test_user_account_creation_initialization" classname="e2e.End2EndTest" time="3.306"/>
+  <testcase name="test_user_accounts_details" classname="e2e.End2EndTest" time="3.484"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="4.856"/>
+  <testcase name="test_user_login" classname="e2e.End2EndTest" time="3.519"/>
+  <testcase name="test_user_trading_page" classname="e2e.End2EndTest" time="2.7"/>
+  <testcase name="test_user_home_page" classname="e2e.End2EndTest" time="3.883"/>
+  <testcase name="test_login" classname="e2e.End2EndTest" time="5.323"/>
+
+  ----
+Time spent in TestParserMojo in finding test methods:--> 101
+Time spent in DynamicSelectEkstaziMojo :--> 327
+Time spent in analysing dependencies changes for all tests is -->3694
+
+---
+
+  Time spent in starting collection for test method:--> e2e.End2EndTest.test_buy_shares is -->2284
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_buy_shares is -->978
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_registration is -->547
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_registration is -->876
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->735
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->989
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_portfolio_check is -->436
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_portfolio_check is -->459
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_initialization is -->376
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_initialization is -->954
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_accounts_details is -->330
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_accounts_details is -->439
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_get_quotes is -->336
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_get_quotes is -->938
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_login is -->405
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_login is -->476
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_trading_page is -->341
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_trading_page is -->789
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_home_page is -->336
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_home_page is -->487
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_login is -->231
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_login is -->246
+
+
+
+------------
+4 -->
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 68.934 s - in e2e.End2EndTest
+
+Time spent in TestParserMojo in finding test methods:--> 99
+Time spent in DynamicSelectEkstaziMojo :--> 353
+Time spent in analysing dependencies changes for all tests is -->4141
+
+
+
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_buy_shares is -->2474
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_buy_shares is -->916
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_registration is -->513
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_registration is -->1052
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->653
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->786
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_portfolio_check is -->382
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_portfolio_check is -->566
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_initialization is -->398
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_initialization is -->824
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_accounts_details is -->314
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_accounts_details is -->711
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_get_quotes is -->371
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_get_quotes is -->822
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_login is -->339
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_login is -->641
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_trading_page is -->314
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_trading_page is -->674
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_home_page is -->347
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_home_page is -->677
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_login is -->207
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_login is -->222
+
+
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="5.279"/>
+  <testcase name="test_user_registration" classname="e2e.End2EndTest" time="3.497"/>
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="6.24"/>
+  <testcase name="test_user_portfolio_check" classname="e2e.End2EndTest" time="3.365"/>
+  <testcase name="test_user_account_creation_initialization" classname="e2e.End2EndTest" time="3.581"/>
+  <testcase name="test_user_accounts_details" classname="e2e.End2EndTest" time="4.335"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="4.457"/>
+  <testcase name="test_user_login" classname="e2e.End2EndTest" time="3.134"/>
+  <testcase name="test_user_trading_page" classname="e2e.End2EndTest" time="3.847"/>
+  <testcase name="test_user_home_page" classname="e2e.End2EndTest" time="3.25"/>
+  <testcase name="test_login" classname="e2e.End2EndTest" time="1.286"/>
+
+
+  ------------------
+
+  5 -->
+
+[INFO] Tests run: 11, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 65.667 s - in e2e.End2EndTest
+---
+Time spent in TestParserMojo in finding test methods:--> 87
+Time spent in DynamicSelectEkstaziMojo :--> 324
+Time spent in analysing dependencies changes for all tests is -->4195
+--
+
+  Time spent in starting collection for test method:--> e2e.End2EndTest.test_buy_shares is -->2446
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_buy_shares is -->897
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_registration is -->556
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_registration is -->934
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->645
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->975
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_portfolio_check is -->397
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_portfolio_check is -->553
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_initialization is -->305
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_initialization is -->975
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_accounts_details is -->361
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_accounts_details is -->508
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_get_quotes is -->373
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_get_quotes is -->904
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_login is -->348
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_login is -->484
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_trading_page is -->284
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_trading_page is -->774
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_home_page is -->344
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_home_page is -->474
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_login is -->233
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_login is -->205
+
+
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="5.428"/>
+  <testcase name="test_user_registration" classname="e2e.End2EndTest" time="4.712"/>
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="3.368"/>
+  <testcase name="test_user_portfolio_check" classname="e2e.End2EndTest" time="2.594"/>
+  <testcase name="test_user_account_creation_initialization" classname="e2e.End2EndTest" time="4.36"/>
+  <testcase name="test_user_accounts_details" classname="e2e.End2EndTest" time="2.996"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="4.763"/>
+  <testcase name="test_user_login" classname="e2e.End2EndTest" time="2.662"/>
+  <testcase name="test_user_trading_page" classname="e2e.End2EndTest" time="3.731"/>
+  <testcase name="test_user_home_page" classname="e2e.End2EndTest" time="4.043"/>
+  <testcase name="test_login" classname="e2e.End2EndTest" time="1.17"/>
+
+
+  ----------
+ Scenario 3
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 63.183 s - in e2e.End2EndTest
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 63.922 s - in e2e.End2EndTest
+
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="5.572"/>
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="5.242"/>
+  <testcase name="test_user_portfolio_check" classname="e2e.End2EndTest" time="3.727"/>
+  <testcase name="test_user_account_creation_initialization" classname="e2e.End2EndTest" time="4.853"/>
+  <testcase name="test_user_accounts_details" classname="e2e.End2EndTest" time="4.084"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="4.866"/>
+  <testcase name="test_user_login" classname="e2e.End2EndTest" time="4.438"/>
+  <testcase name="test_user_trading_page" classname="e2e.End2EndTest" time="3.552"/>
+  <testcase name="test_user_home_page" classname="e2e.End2EndTest" time="3.996"/>
+
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 62.67 s - in e2e.End2EndTest
+
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="5.736"/>
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="4.553"/>
+  <testcase name="test_user_portfolio_check" classname="e2e.End2EndTest" time="2.952"/>
+  <testcase name="test_user_account_creation_initialization" classname="e2e.End2EndTest" time="3.891"/>
+  <testcase name="test_user_accounts_details" classname="e2e.End2EndTest" time="2.937"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="4.664"/>
+  <testcase name="test_user_login" classname="e2e.End2EndTest" time="3.62"/>
+  <testcase name="test_user_trading_page" classname="e2e.End2EndTest" time="3.784"/>
+  <testcase name="test_user_home_page" classname="e2e.End2EndTest" time="4.761"/>
+
+
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 67.05 s - in e2e.End2EndTest
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="5.332"/>
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="4.384"/>
+  <testcase name="test_user_portfolio_check" classname="e2e.End2EndTest" time="2.974"/>
+  <testcase name="test_user_account_creation_initialization" classname="e2e.End2EndTest" time="3.106"/>
+  <testcase name="test_user_accounts_details" classname="e2e.End2EndTest" time="3.901"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="3.709"/>
+  <testcase name="test_user_login" classname="e2e.End2EndTest" time="5.534"/>
+  <testcase name="test_user_trading_page" classname="e2e.End2EndTest" time="3.993"/>
+  <testcase name="test_user_home_page" classname="e2e.End2EndTest" time="6.315"/>
+
+
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 65.85 s - in e2e.End2EndTest
+  
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="7.253"/>
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="3.609"/>
+  <testcase name="test_user_portfolio_check" classname="e2e.End2EndTest" time="2.846"/>
+  <testcase name="test_user_account_creation_initialization" classname="e2e.End2EndTest" time="3.671"/>
+  <testcase name="test_user_accounts_details" classname="e2e.End2EndTest" time="3.309"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="5.18"/>
+  <testcase name="test_user_login" classname="e2e.End2EndTest" time="4.037"/>
+  <testcase name="test_user_trading_page" classname="e2e.End2EndTest" time="4.445"/>
+  <testcase name="test_user_home_page" classname="e2e.End2EndTest" time="4.327"/>
+
+  --
+
+Time spent in TestParserMojo in finding test methods:--> 101
+Time spent in DynamicSelectEkstaziMojo :--> 348
+Time spent in analysing dependencies changes for all tests is -->5081
+
+
+  Time spent in starting collection for test method:--> e2e.End2EndTest.test_buy_shares is -->3547
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_buy_shares is -->1799
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->996
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->718
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_portfolio_check is -->695
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_portfolio_check is -->505
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_initialization is -->591
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_initialization is -->513
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_accounts_details is -->360
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_accounts_details is -->837
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_get_quotes is -->594
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_get_quotes is -->529
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_login is -->414
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_login is -->607
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_trading_page is -->589
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_trading_page is -->389
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_home_page is -->501
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_home_page is -->420
+
+  ------
+
+ Scenario 5
+
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 23.177 s - in e2e.End2EndTest
+
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="6.821"/>
+
+Time spent in TestParserMojo in finding test methods:--> 126
+Time spent in DynamicSelectEkstaziMojo :--> 333
+Time spent in analysing dependencies changes for all tests is -->5751
+
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->2932
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->1425
+
+----
+2.
+<testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="4.519"/>
+
+Time spent in TestParserMojo in finding test methods:--> 135
+Time spent in DynamicSelectEkstaziMojo :--> 338
+Time spent in analysing dependencies changes for all tests is -->5238
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->2477
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->1519
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.137 s - in e2e.End2EndTest
+
+----
+3.
+
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="3.936"/>
+
+Time spent in TestParserMojo in finding test methods:--> 115
+Time spent in DynamicSelectEkstaziMojo :--> 354
+Time spent in analysing dependencies changes for all tests is -->5012
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->2837
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->730
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.545 s - in e2e.End2EndTest
+
+
+---
+4. 
+
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="4.26"/>
+Time spent in TestParserMojo in finding test methods:--> 113
+Time spent in DynamicSelectEkstaziMojo :--> 325
+Time spent in analysing dependencies changes for all tests is -->5082
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->2669
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->1024
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.146 s - in e2e.End2EndTest
+
+---
+5.
+  <testcase name="test_user_account_creation_form_submission" classname="e2e.End2EndTest" time="3.551"/>
+
+Time spent in TestParserMojo in finding test methods:--> 105
+Time spent in DynamicSelectEkstaziMojo :--> 319
+Time spent in analysing dependencies changes for all tests is -->4811
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->2521
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_user_account_creation_form_submission is -->794
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.837 s - in e2e.End2EndTest
+
+
+
+--------
+ Scenario 6
+
+
+1. 
+
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="5.329"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="4.55"/>
+
+  Time spent in TestParserMojo in finding test methods:--> 92
+Time spent in DynamicSelectEkstaziMojo :--> 312
+Time spent in analysing dependencies changes for all tests is -->4656
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_buy_shares is -->2262
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_buy_shares is -->922
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_get_quotes is -->791
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_get_quotes is -->738
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.565 s - in e2e.End2EndTest
+
+---
+
+2. 
+
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="5.755"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="5.921"/>
+
+Time spent in TestParserMojo in finding test methods:--> 80
+Time spent in DynamicSelectEkstaziMojo :--> 316
+Time spent in analysing dependencies changes for all tests is -->4622
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_buy_shares is -->2490
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_buy_shares is -->979
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_get_quotes is -->546
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_get_quotes is -->661
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.95 s - in e2e.End2EndTest
+
+
+---
+3.
+
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="4.68"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="3.859"/>
+
+Time spent in TestParserMojo in finding test methods:--> 129
+Time spent in DynamicSelectEkstaziMojo :--> 340
+Time spent in analysing dependencies changes for all tests is -->4577
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_buy_shares is -->2353
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_buy_shares is -->1117
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_get_quotes is -->554
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_get_quotes is -->1034
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 25.397 s - in e2e.End2EndTest
+
+
+
+---
+4.
+
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="4.994"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="4.93"/>
+
+Time spent in TestParserMojo in finding test methods:--> 74
+Time spent in DynamicSelectEkstaziMojo :--> 317
+Time spent in analysing dependencies changes for all tests is -->5398
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_buy_shares is -->3734
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_buy_shares is -->1134
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_get_quotes is -->630
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_get_quotes is -->1052
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 29.213 s - in e2e.End2EndTest
+
+
+---
+5.
+
+
+
+  <testcase name="test_buy_shares" classname="e2e.End2EndTest" time="5.194"/>
+  <testcase name="test_get_quotes" classname="e2e.End2EndTest" time="4.115"/>
+
+Time spent in TestParserMojo in finding test methods:--> 117
+Time spent in DynamicSelectEkstaziMojo :--> 348
+Time spent in analysing dependencies changes for all tests is -->5115
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_buy_shares is -->2521
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_buy_shares is -->838
+Time spent in starting collection for test method:--> e2e.End2EndTest.test_get_quotes is -->793
+Time spent in finishing collection for test method:--> e2e.End2EndTest.test_get_quotes is -->845
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 26.123 s - in e2e.End2EndTest
+
+
+=====
+Pattern
+
+[0-9A-F].*:--> [0-9A-F].* -->

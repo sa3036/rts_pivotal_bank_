@@ -16,3 +16,7 @@ spring:
     service-registry:
       auto-registration:
         enabled: false
+
+management:
+  security:
+    enabled: false

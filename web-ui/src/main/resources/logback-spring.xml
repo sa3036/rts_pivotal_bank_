@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+    <!-- <property name="LOG_PATH" value="${LOG_DIR}" /> -->
+    <!-- <include resource="org/springframework/boot/logging/logback/defaults.xml" /> -->
+    <include resource="org/springframework/boot/logging/logback/base.xml" />
+    <!-- <include resource="org/springframework/boot/logging/logback/file-appender.xml" /> -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- <appender name="com.test.demo" class="ch.qos.logback.core.FileAppender">
+        <file>/root/microservices/final_research_progress_RTS/code/src/apps/demo/entry_exit.log</file>
+        <append>true</append>
+        <immediateFlush>false</immediateFlush>
+        <encoder>
+          <pattern>%logger{36} %msg%n</pattern>
+        </encoder>
+      </appender> -->
+    
+
+      <appender name="ground_truth" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <file>/var/log/entry_exit.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+          <fileNamePattern>entry_exit.%d{yyyy-MM-dd}.log</fileNamePattern>
+          <maxHistory>30</maxHistory>
+          <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+
+        <encoder>
+          <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %msg%n</pattern>
+        </encoder>
+
+      </appender> 
+
+      <appender name="app_logs" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <file>/var/log/app_logs.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+          <fileNamePattern>app_logs.%d{yyyy-MM-dd}.log</fileNamePattern>
+          <maxHistory>30</maxHistory>
+          <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+
+        <encoder>
+          <!-- <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %msg%n</pattern> -->
+          <pattern>%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger{36}.%M - %msg%n</pattern>
+        </encoder>
+        
+      </appender> 
+
+    <logger level="WARN" name="entry_exit" additivity="true">
+        <appender-ref ref="ground_truth" />
+    </logger>
+
+    <root level="info">
+        <!-- <appender-ref ref="STDOUT" /> -->
+        <appender-ref ref="app_logs" />
+    </root>
+</configuration>

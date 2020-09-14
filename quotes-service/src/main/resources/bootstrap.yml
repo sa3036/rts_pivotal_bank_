@@ -1,10 +1,30 @@
+# spring:
+# #  profiles.active: local
+#   application:
+#      name: quotes-service
+# info:
+#   build:
+#     group: ${group}
+#     name: ${name}
+#     description: ${description}
+#     version: ${version}
+
 spring:
-#  profiles.active: local
   application:
      name: quotes-service
-info:
-  build:
-    group: ${group}
-    name: ${name}
-    description: ${description}
-    version: ${version}
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+    service-registry:
+      auto-registration:
+        enabled: false
+
+pivotal:
+  quotes:
+    quote_url: https://sandbox.iexapis.com/stable/stock/{symbol}/quote?token=Tpk_ea5a281c14b7432598fb68f26742fdaa
+    quotes_url: https://sandbox.iexapis.com/stable/stock/market/batch?symbols={symbols}&types=quote&token=Tpk_ea5a281c14b7432598fb68f26742fdaa
+    companies_url: https://sandbox.iexapis.com/stable/stock/{symbol}/company?token=Tpk_ea5a281c14b7432598fb68f26742fdaa
