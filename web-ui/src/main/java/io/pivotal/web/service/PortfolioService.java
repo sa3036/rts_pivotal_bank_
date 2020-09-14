@@ -33,7 +33,7 @@ public class PortfolioService {
 	private static final Logger logger = LoggerFactory
 			.getLogger(PortfolioService.class);
 	@Autowired
-	@LoadBalanced
+	  //@LoadBalanced
 	private RestTemplate restTemplate;
 
     @Value("${pivotal.portfolioService.name}")

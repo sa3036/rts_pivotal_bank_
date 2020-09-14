@@ -8,7 +8,7 @@ import de.codecentric.boot.admin.config.EnableAdminServer;
 
 
 @SpringBootApplication
-@EnableDiscoveryClient
+//@EnableDiscoveryClient
 @EnableAdminServer
 public class AdminServer {
 

@@ -22,7 +22,7 @@ public class AnalyticsService {
 			.getLogger(AnalyticsService.class);
 
 	@Autowired
-	@LoadBalanced
+	  //@LoadBalanced
 	private RestTemplate restTemplate;
 
 

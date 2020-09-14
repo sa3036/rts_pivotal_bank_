@@ -11,8 +11,11 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * A service to retrieve Company and Quote information.
@@ -32,7 +35,7 @@ public class QuoteService {
 	protected String company_url;
 
 	//TODO: Remove API KEY
-	@Value("${pivotal.quotes.alpha_advantage_rest_query}")
+	// @Value("${pivotal.quotes.alpha_advantage_rest_query}")
 	protected String alpha_advantage_url = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols={symbols}&apikey=B1SQNYULIQ8J9X2A";
 
 	public static final String FMT = "json";
@@ -111,7 +114,8 @@ public class QuoteService {
 	public List<Quote> getQuotes(String symbols) {
 		log.debug("retrieving multiple quotes for: " + symbols);
 		log.debug("alpha advantage URL: " + alpha_advantage_url);
-		AlphaAdvantageResponse response = restTemplate.getForObject(alpha_advantage_url, AlphaAdvantageResponse.class, symbols);
+		// AlphaAdvantageResponse response = restTemplate.getForObject(alpha_advantage_url, AlphaAdvantageResponse.class, symbols);
+		AlphaAdvantageResponse response = getMockedBatchQuotes();
 		AlphaAdvantageQuote n = new AlphaAdvantageQuote();
 		log.debug("Got response: " + response);
 		List<Quote> quotes = response
@@ -130,5 +134,20 @@ public class QuoteService {
 				+ symbol);
 		List<CompanyInfo> companies = new ArrayList<>();
 		return companies;
+	}
+
+	private AlphaAdvantageResponse getMockedBatchQuotes(){
+		ObjectMapper objectMapper = new ObjectMapper();
+		String mock_response_json = "{\n    \"Meta Data\": {\n        \"1. Information\": \"Batch Stock Market Quotes\",\n        \"2. Notes\": \"IEX Real-Time Price provided for free by IEX (https://iextrading.com/developer/).\",\n        \"3. Time Zone\": \"US/Eastern\"\n    },\n    \"Stock Quotes\": [\n        {\n            \"1. symbol\": \"MSFT\",\n            \"2. price\": \"90.3900\",\n            \"3. volume\": \"26236380\",\n            \"4. timestamp\": \"2018-03-22 15:27:20\"\n        },\n        {\n            \"1. symbol\": \"FB\",\n            \"2. price\": \"166.3200\",\n            \"3. volume\": \"66033155\",\n            \"4. timestamp\": \"2018-03-22 15:27:20\"\n        },\n        {\n            \"1. symbol\": \"AAPL\",\n            \"2. price\": \"170.7200\",\n            \"3. volume\": \"32402881\",\n            \"4. timestamp\": \"2018-03-22 15:27:21\"\n        }\n    ]\n}";
+		AlphaAdvantageResponse response = null;
+		try {
+			response = objectMapper.readValue(mock_response_json, AlphaAdvantageResponse.class );
+			// System.out.println(response);
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return response;
 	}
 }

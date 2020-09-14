@@ -14,7 +14,7 @@ for p in $(kubectl get pods | grep Terminating | awk '{print $1}'); do kubectl d
 kubectl apply -f app.yml
 
 # wait for the pods to get ready
-sleep 2m
+sleep 1m
 
 #forwards the ports for RTS connection
 sh forward_port.sh

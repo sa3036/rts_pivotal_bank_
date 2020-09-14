@@ -1,10 +1,38 @@
+# spring:
+# #  profiles.active: local
+#   application:
+#      name: portfolio-service
+# info:
+#   build:
+#     group: ${group}
+#     name: ${name}
+#     description: ${description}
+#     version: ${version}
+
+
 spring:
-#  profiles.active: local
   application:
-     name: portfolio-service
-info:
-  build:
-    group: ${group}
-    name: ${name}
-    description: ${description}
-    version: ${version}
+    name: portfolio-service
+  cloud:
+    config:
+      enabled: false
+    discovery:
+      enabled: false
+    service-registry:
+      auto-registration:
+        enabled: false
+
+pivotal:
+   quotesService:
+      name: quotes-service:8080
+   accountsService:
+      #name: localhost:8081
+      name: accounts-service:8080
+
+hystrix:
+  metrics:
+    enabled: false
+
+eureka:
+  client:
+    enabled: false

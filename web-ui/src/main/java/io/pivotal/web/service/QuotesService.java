@@ -33,7 +33,7 @@ public class QuotesService {
 	private static final Logger logger = LoggerFactory
 			.getLogger(QuotesService.class);
 	@Autowired
-	@LoadBalanced
+	  //@LoadBalanced
 	private RestTemplate restTemplate;
 
 

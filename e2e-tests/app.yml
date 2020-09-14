@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: end2end
+  labels:
+    name: end2end
+spec:
+  containers:
+  - name: end2end
+    image: satishsarraf/end2end
+    # resources:
+    #   limits:
+    #     memory: "1280Mi"
+    #     cpu: "500m"
+    # ports:
+    #   - containerPort: <Port>
