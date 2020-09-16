@@ -1,4 +1,4 @@
-package io.pivotal.portfolio.config;
+package io.pivotal.quotes.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -1,14 +1,12 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.5.RELEASE'
+        springBootVersion = '2.0.3.RELEASE'
     }
-
     repositories {
         mavenCentral()
     }
-
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
@@ -23,30 +21,37 @@ apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: "io.spring.dependency-management"
 
-test { finalizedBy jacocoTestReport }
+// test { finalizedBy jacocoTestReport }
 
-jacocoTestReport {
-    group = "Reporting"
-    description = "Generate Jacoco coverage reports after running tests."
-    reports {
+// jacocoTestReport {
+//     group = "Reporting"
+//     description = "Generate Jacoco coverage reports after running tests."
+//     reports {
 
-        csv.enabled false
+//         csv.enabled false
 
-        html {
-            enabled true
-            destination file("${buildDir}/reports/jacoco")
-        }
+//         html {
+//             enabled true
+//             destination file("${buildDir}/reports/jacoco")
+//         }
 
-        xml.enabled false
-    }
+//         xml.enabled false
+//     }
 
-    additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+//     additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+// }
+
+
+// jacoco {
+//     toolVersion = "0.7.5+" //	reportsDir = file("$buildDir/customJacocoReportDir")
+// }
+
+
+ext {
+    springCloudServicesVersion = '2.0.1.RELEASE'
+    springCloudVersion = 'Finchley.RELEASE'
 }
 
-
-jacoco {
-    toolVersion = "0.7.5+" //	reportsDir = file("$buildDir/customJacocoReportDir")
-}
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -54,23 +59,29 @@ targetCompatibility = 1.8
 
 dependencyManagement {
     imports {
-        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Edgware.SR2"
-        mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:1.6.1.RELEASE"
+        mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:${springCloudServicesVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
 }
+
 dependencies {
+
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
+
 
     compile group: 'com.example', name: 'rts_monitor', version: '1.0.0'
 
 
     // shared dependencies for all services
+	compile "org.springframework.boot:spring-boot-starter-security"
     compile "org.springframework.boot:spring-boot-starter-web"
     compile "org.springframework.boot:spring-boot-starter-actuator"
     // compile "org.springframework.cloud:spring-cloud-starter-sleuth"
-    // //compile "org.springframework.cloud:spring-cloud-starter-zipkin"
+    compile "org.springframework.cloud:spring-cloud-starter-zipkin"
     // compile "org.springframework.cloud:spring-cloud-sleuth-zipkin-stream"
     // compile "org.springframework.cloud:spring-cloud-starter-stream-rabbit"
-    compileOnly('org.projectlombok:lombok')
+    compileOnly "org.projectlombok:lombok"
     compile "org.slf4j:slf4j-api"
 
     compile "org.springframework.cloud:spring-cloud-starter-config"
@@ -88,10 +99,12 @@ dependencies {
 
 }
 
-jar {
+
+bootJar {
     baseName = 'quotes'
-    version = "" // omit the version from the war file name
+    version = ""  // omit the version from the war file name
 }
+
 description = "Micro-service to retrieve up to date quotes"
 
 // task wrapper(type: Wrapper) { gradleVersion = '4.6' }

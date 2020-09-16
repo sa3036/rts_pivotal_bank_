@@ -1,61 +1,40 @@
 buildscript {
-	ext {
-		springBootVersion = '1.5.10.RELEASE'
-	}
-
-	repositories {
-		mavenCentral()
-	}
-
-	dependencies {
-		classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
-	}
-}
-
-repositories {
-	mavenLocal()
-	mavenCentral()
+    ext {
+        springBootVersion = '2.0.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
 apply plugin: 'java'
-apply plugin: 'jacoco'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
-apply plugin: "io.spring.dependency-management"
+apply plugin: 'io.spring.dependency-management'
 
-test { finalizedBy jacocoTestReport }
-
-jacocoTestReport {
-	group = "Reporting"
-	description = "Generate Jacoco coverage reports after running tests."
-	reports {
-
-		csv.enabled false
-
-		html{
-			enabled true
-			destination file("${buildDir}/reports/jacoco")
-		}
-
-		xml.enabled false
-	}
-
-	additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+bootJar {
+	baseName = 'portfolio'
+	version = "" // omit the version from the war file name
 }
 
 
-jacoco { toolVersion = "0.7.5+" //	reportsDir = file("$buildDir/customJacocoReportDir")
-}
-
+description = "Micro-service to manage portfolios"
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-dependencyManagement {
-		imports {
-			mavenBom "org.springframework.cloud:spring-cloud-dependencies:Edgware.SR2"
-			mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:1.6.1.RELEASE"
-		}
+repositories {
+	mavenLocal()
+    mavenCentral()
 }
+
+ext {
+    springCloudServicesVersion = '2.0.1.RELEASE'
+    springCloudVersion = 'Finchley.RELEASE'
+}
+
 dependencies {
 
     compile group: 'com.example', name: 'rts_monitor', version: '1.0.0'
@@ -68,7 +47,7 @@ dependencies {
 	compile "org.springframework.boot:spring-boot-starter-actuator"
 	compile('org.springframework.cloud:spring-cloud-starter-sleuth')
 
-	// //compile "org.springframework.cloud:spring-cloud-starter-zipkin"
+	compile "org.springframework.cloud:spring-cloud-starter-zipkin"
 	// compile "org.springframework.cloud:spring-cloud-sleuth-zipkin-stream"
 	// compile "org.springframework.cloud:spring-cloud-starter-stream-rabbit"
 
@@ -91,10 +70,9 @@ dependencies {
 
 }
 
-jar {
-	baseName = 'portfolio'
-	version = "" // omit the version from the war file name
+dependencyManagement {
+    imports {
+        mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:${springCloudServicesVersion}"
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
 }
-description = "Micro-service to manage portfolios"
-
-// task wrapper(type: Wrapper) { gradleVersion = '4.6' }

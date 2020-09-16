@@ -131,4 +131,9 @@ public class QuoteService {
 		List<CompanyInfo> companies = new ArrayList<>();
 		return companies;
 	}
+
+	// private AlphaAdvantageResponse getMockedBatchQuotes(){
+	// 	Gson gson = new Gson();
+	// 	return null;
+	// }
 }
