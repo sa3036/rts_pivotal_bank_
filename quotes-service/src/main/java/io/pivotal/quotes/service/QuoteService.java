@@ -11,12 +11,8 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 
 /**
  * A service to retrieve Company and Quote information.
@@ -29,15 +25,14 @@ import com.google.gson.Gson;
 @Slf4j
 public class QuoteService {
 
-	@Value("${pivotal.quotes.quotes_url}")
+	@Value("${pivotal.quotes.quote_url}")
 	protected String quote_url;
+
+	@Value("${pivotal.quotes.quotes_url}")
+	protected String quotes_url;
 
 	@Value("${pivotal.quotes.companies_url}")
 	protected String company_url;
-
-	//TODO: Remove API KEY
-	// @Value("${pivotal.quotes.alpha_advantage_rest_query}")
-	protected String alpha_advantage_url = "https://www.alphavantage.co/query?function=BATCH_STOCK_QUOTES&symbols={symbols}&apikey=B1SQNYULIQ8J9X2A";
 
 	public static final String FMT = "json";
 
@@ -56,17 +51,23 @@ public class QuoteService {
 	 */
 	@HystrixCommand(fallbackMethod = "getQuoteFallback")
 	public Quote getQuote(String symbol) throws SymbolNotFoundException {
+
 		log.debug("QuoteService.getQuote: retrieving quote for: " + symbol);
+
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("symbol", symbol);
 
-		Quote quote = restTemplate.getForObject(quote_url, Quote.class, params);
-		log.debug("QuoteService.getQuote: retrieved quote: " + quote);
+		IexQuote quote = restTemplate.getForObject(quote_url, IexQuote.class, params);
 
 		if (quote.getSymbol() == null) {
 			throw new SymbolNotFoundException("Symbol not found: " + symbol);
 		}
-		return quote;
+
+		log.debug("QuoteService.getQuote: retrieved quote: " + quote);
+
+
+		return QuoteMapper.INSTANCE.mapFromIexQuote(quote);
+
 	}
 
 	@SuppressWarnings("unused")
@@ -114,16 +115,30 @@ public class QuoteService {
 	 */
 	public List<Quote> getQuotes(String symbols) {
 		log.debug("retrieving multiple quotes for: " + symbols);
-		log.debug("alpha advantage URL: " + alpha_advantage_url);
-		// AlphaAdvantageResponse response = restTemplate.getForObject(alpha_advantage_url, AlphaAdvantageResponse.class, symbols);
-		AlphaAdvantageResponse response = getMockedBatchQuotes();
-		AlphaAdvantageQuote n = new AlphaAdvantageQuote();
-		log.debug("Got response: " + response);
-		List<Quote> quotes = response
-				.getQuotes()
-				.stream()
-				.map(aaQuote -> QuoteMapper.INSTANCE.mapFromAlphaAdvantageQuote(aaQuote))
-				.collect(Collectors.toList());
+
+		IexBatchQuote batchQuote = restTemplate.getForObject(quotes_url, IexBatchQuote.class, symbols);
+
+		log.debug("Got response: " + batchQuote);
+		final List<Quote> quotes = new ArrayList<>();
+
+		if(batchQuote != null) {
+			quotes.addAll(Arrays.asList(symbols.split(","))
+					.stream()
+					.map(symbol -> QuoteMapper.INSTANCE.mapFromIexQuote(batchQuote.get(symbol).get("quote")))
+					.collect(Collectors.toList()));
+		} else {
+			log.warn("Quote lookup returned a null array of quotes");
+			String[] parts = symbols.split(",");
+			Arrays.stream(parts).forEach(
+					symbol -> {
+						Quote quote = new Quote();
+						quote.setSymbol(symbol);
+						quote.setStatus("FAILED");
+						quotes.add(quote);
+					}
+			);
+		}
+
 		return quotes;
 	}
 
@@ -136,36 +151,4 @@ public class QuoteService {
 		List<CompanyInfo> companies = new ArrayList<>();
 		return companies;
 	}
-
-	private AlphaAdvantageResponse getMockedBatchQuotes(){
-		ObjectMapper objectMapper = new ObjectMapper();
-		String mock_response_json = "{\n    \"Meta Data\": {\n        \"1. Information\": \"Batch Stock Market Quotes\",\n        \"2. Notes\": \"IEX Real-Time Price provided for free by IEX (https://iextrading.com/developer/).\",\n        \"3. Time Zone\": \"US/Eastern\"\n    },\n    \"Stock Quotes\": [\n        {\n            \"1. symbol\": \"MSFT\",\n            \"2. price\": \"90.3900\",\n            \"3. volume\": \"26236380\",\n            \"4. timestamp\": \"2018-03-22 15:27:20\"\n        },\n        {\n            \"1. symbol\": \"FB\",\n            \"2. price\": \"166.3200\",\n            \"3. volume\": \"66033155\",\n            \"4. timestamp\": \"2018-03-22 15:27:20\"\n        },\n        {\n            \"1. symbol\": \"AAPL\",\n            \"2. price\": \"170.7200\",\n            \"3. volume\": \"32402881\",\n            \"4. timestamp\": \"2018-03-22 15:27:21\"\n        }\n    ]\n}";
-		AlphaAdvantageResponse response = null;
-		try {
-			response = objectMapper.readValue(mock_response_json, AlphaAdvantageResponse.class );
-			// System.out.println(response);
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return response;
-	}
-	
-	// public static void main(String[] args) {
-	// 	// Gson gson = new Gson();
-	// 	ObjectMapper objectMapper = new ObjectMapper();
-	// 	String mock_response_json = "{\n    \"Meta Data\": {\n        \"1. Information\": \"Batch Stock Market Quotes\",\n        \"2. Notes\": \"IEX Real-Time Price provided for free by IEX (https://iextrading.com/developer/).\",\n        \"3. Time Zone\": \"US/Eastern\"\n    },\n    \"Stock Quotes\": [\n        {\n            \"1. symbol\": \"MSFT\",\n            \"2. price\": \"90.3900\",\n            \"3. volume\": \"26236380\",\n            \"4. timestamp\": \"2018-03-22 15:27:20\"\n        },\n        {\n            \"1. symbol\": \"FB\",\n            \"2. price\": \"166.3200\",\n            \"3. volume\": \"66033155\",\n            \"4. timestamp\": \"2018-03-22 15:27:20\"\n        },\n        {\n            \"1. symbol\": \"AAPL\",\n            \"2. price\": \"170.7200\",\n            \"3. volume\": \"32402881\",\n            \"4. timestamp\": \"2018-03-22 15:27:21\"\n        }\n    ]\n}";
-		
-	// 	try {
-	// 		AlphaAdvantageResponse response = objectMapper.readValue(mock_response_json, AlphaAdvantageResponse.class );
-	// 		System.out.println(response);
-			
-	// 	} catch (IOException e) {
-	// 		// TODO Auto-generated catch block
-	// 		e.printStackTrace();
-	// 	}
-	// 	// (mock_response_json, AlphaAdvantageResponse.class );
-	// 	// return response;
-	// }
 }
