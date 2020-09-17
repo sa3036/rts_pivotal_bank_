@@ -142,6 +142,9 @@ ext {
 }
 
 dependencies {
+
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+	annotationProcessor 'org.projectlombok:lombok:1.18.12'
     compile("org.aspectj:aspectjweaver:1.8.8")
     // compile group: 'com.example', name: 'rts_monitor', version: '1.0.0'
 

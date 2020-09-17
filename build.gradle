@@ -57,4 +57,4 @@ codeCoverageReport.dependsOn { subprojects*.test }
 //run full report after test
 test.finalizedBy(codeCoverageReport)
 
-task wrapper(type: Wrapper) { gradleVersion = '4.6' }
+// task wrapper(type: Wrapper) { gradleVersion = '6.4' }

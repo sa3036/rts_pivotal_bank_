@@ -7,6 +7,7 @@ out
 .DS_Store
 
 target/
+bin/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -18,3 +19,6 @@ gradle-app.setting
 .gradletasknamecache
 
 *.log
+#setting files
+#.classpath
+

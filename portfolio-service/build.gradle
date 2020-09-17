@@ -37,6 +37,9 @@ ext {
 
 dependencies {
 
+	compileOnly 'org.projectlombok:lombok:1.18.12'
+	annotationProcessor 'org.projectlombok:lombok:1.18.12'
+
     compile group: 'com.example', name: 'rts_monitor', version: '1.0.0'
 
     // https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui

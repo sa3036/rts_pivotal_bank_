@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>pivotal-bank-demo</name>
-	<comment>Project pivotal-bank-demo created by Buildship.</comment>
+	<name>accounts-service</name>
+	<comment>Project accounts-service created by Buildship.</comment>
 	<projects>
 	</projects>
 	<buildSpec>
@@ -22,7 +22,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1600214464926</id>
+			<id>1600284209350</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
