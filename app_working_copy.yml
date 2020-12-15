@@ -1,0 +1,191 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: users-service
+  namespace: bank-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: users-service
+  template:
+    metadata:
+      labels:
+        app: users-service
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: users-service
+        image: satishsarraf/users-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: users-service
+spec:
+  selector:
+    app: users-service
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accounts-service
+  namespace: bank-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: accounts-service
+  template:
+    metadata:
+      labels:
+        app: accounts-service
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: accounts-service
+        image: satishsarraf/accounts-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: accounts-service
+spec:
+  selector:
+    app: accounts-service
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quotes-service
+  namespace: bank-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quotes-service
+  template:
+    metadata:
+      labels:
+        app: quotes-service
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: quotes-service
+        image: satishsarraf/quotes-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quotes-service
+spec:
+  selector:
+    app: quotes-service
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio-service
+  namespace: bank-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: portfolio-service
+  template:
+    metadata:
+      labels:
+        app: portfolio-service
+    spec:
+      containers:
+      - name: portfolio-service
+        image: satishsarraf/portfolio-service
+        imagePullPolicy: "Always"
+        ports:
+        - containerPort: 8080
+
+      # initContainers:
+      # - name: init-accounts
+      #   image: busybox
+      #   command: ['sh', '-c', 'until nslookup accounts-service; do echo waiting for accounts-service; sleep 2; done;']
+      # - name: init-quotes
+      #   image: busybox
+      #   command: ['sh', '-c', 'until nslookup quotes-service; do echo waiting for quotes-service; sleep 2; done;']
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-service
+spec:
+  selector:
+    app: portfolio-service
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-ui-service
+  namespace: bank-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-ui-service
+  template:
+    metadata:
+      labels:
+        app: web-ui-service
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+      - name: web-ui-service
+        image: satishsarraf/web-ui-service:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-ui-service
+spec:
+  selector:
+    app: web-ui-service
+  type: NodePort
+  ports:
+    - nodePort: 32001
+      port: 8080
+      targetPort: 8080

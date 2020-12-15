@@ -118,11 +118,17 @@ public class QuoteService {
 		AlphaAdvantageResponse response = getMockedBatchQuotes();
 		AlphaAdvantageQuote n = new AlphaAdvantageQuote();
 		log.debug("Got response: " + response);
-		List<Quote> quotes = response
-				.getQuotes()
-				.stream()
-				.map(aaQuote -> QuoteMapper.INSTANCE.mapFromAlphaAdvantageQuote(aaQuote))
-				.collect(Collectors.toList());
+
+		List<Quote> quotes = new ArrayList();
+		for (AlphaAdvantageQuote aaQuote: response.getQuotes()){
+			quotes.add(QuoteMapper.INSTANCE.mapFromAlphaAdvantageQuote(aaQuote));
+		}
+
+		// List<Quote> quotes = response
+		// 		.getQuotes()
+		// 		.stream()
+		// 		.map(aaQuote -> QuoteMapper.INSTANCE.mapFromAlphaAdvantageQuote(aaQuote))
+		// 		.collect(Collectors.toList());
 		return quotes;
 	}
 
