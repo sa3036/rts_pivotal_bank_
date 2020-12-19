@@ -48,14 +48,14 @@ public class Portfolio {
 		this.currentTotalValue = currentTotalValue;
 	}
 	
-	public void refreshTotalValue() {
-		this.currentTotalValue = BigDecimal.ZERO;
-		holdings.values().forEach(holding -> {
-			this.currentTotalValue = this.currentTotalValue.add(holding.getCurrentValue().multiply(new BigDecimal(holding.getQuantity())));
-			this.purchaseValue = this.purchaseValue.add(holding.getPurchaseValue());
-			this.sellValue = this.sellValue.add(holding.getSellValue());
-		});
-	}
+	// public void refreshTotalValue() {
+	// 	this.currentTotalValue = BigDecimal.ZERO;
+	// 	holdings.values().forEach(holding -> {
+	// 		this.currentTotalValue = this.currentTotalValue.add(holding.getCurrentValue().multiply(new BigDecimal(holding.getQuantity())));
+	// 		this.purchaseValue = this.purchaseValue.add(holding.getPurchaseValue());
+	// 		this.sellValue = this.sellValue.add(holding.getSellValue());
+	// 	});
+	// }
 	
 	public BigDecimal getSellValue() {
 		return sellValue;

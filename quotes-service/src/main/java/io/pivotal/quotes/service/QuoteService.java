@@ -16,7 +16,6 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
 
 /**
  * A service to retrieve Company and Quote information.
@@ -119,11 +118,17 @@ public class QuoteService {
 		AlphaAdvantageResponse response = getMockedBatchQuotes();
 		AlphaAdvantageQuote n = new AlphaAdvantageQuote();
 		log.debug("Got response: " + response);
-		List<Quote> quotes = response
-				.getQuotes()
-				.stream()
-				.map(aaQuote -> QuoteMapper.INSTANCE.mapFromAlphaAdvantageQuote(aaQuote))
-				.collect(Collectors.toList());
+
+		List<Quote> quotes = new ArrayList();
+		for (AlphaAdvantageQuote aaQuote: response.getQuotes()){
+			quotes.add(QuoteMapper.INSTANCE.mapFromAlphaAdvantageQuote(aaQuote));
+		}
+
+		// List<Quote> quotes = response
+		// 		.getQuotes()
+		// 		.stream()
+		// 		.map(aaQuote -> QuoteMapper.INSTANCE.mapFromAlphaAdvantageQuote(aaQuote))
+		// 		.collect(Collectors.toList());
 		return quotes;
 	}
 
@@ -151,21 +156,4 @@ public class QuoteService {
 		}
 		return response;
 	}
-	
-	// public static void main(String[] args) {
-	// 	// Gson gson = new Gson();
-	// 	ObjectMapper objectMapper = new ObjectMapper();
-	// 	String mock_response_json = "{\n    \"Meta Data\": {\n        \"1. Information\": \"Batch Stock Market Quotes\",\n        \"2. Notes\": \"IEX Real-Time Price provided for free by IEX (https://iextrading.com/developer/).\",\n        \"3. Time Zone\": \"US/Eastern\"\n    },\n    \"Stock Quotes\": [\n        {\n            \"1. symbol\": \"MSFT\",\n            \"2. price\": \"90.3900\",\n            \"3. volume\": \"26236380\",\n            \"4. timestamp\": \"2018-03-22 15:27:20\"\n        },\n        {\n            \"1. symbol\": \"FB\",\n            \"2. price\": \"166.3200\",\n            \"3. volume\": \"66033155\",\n            \"4. timestamp\": \"2018-03-22 15:27:20\"\n        },\n        {\n            \"1. symbol\": \"AAPL\",\n            \"2. price\": \"170.7200\",\n            \"3. volume\": \"32402881\",\n            \"4. timestamp\": \"2018-03-22 15:27:21\"\n        }\n    ]\n}";
-		
-	// 	try {
-	// 		AlphaAdvantageResponse response = objectMapper.readValue(mock_response_json, AlphaAdvantageResponse.class );
-	// 		System.out.println(response);
-			
-	// 	} catch (IOException e) {
-	// 		// TODO Auto-generated catch block
-	// 		e.printStackTrace();
-	// 	}
-	// 	// (mock_response_json, AlphaAdvantageResponse.class );
-	// 	// return response;
-	// }
 }

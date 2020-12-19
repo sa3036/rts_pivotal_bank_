@@ -10,6 +10,7 @@ buildscript {
     }
 }
 
+apply plugin: 'maven'
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -77,5 +78,27 @@ dependencyManagement {
     imports {
         mavenBom "io.pivotal.spring.cloud:spring-cloud-services-dependencies:${springCloudServicesVersion}"
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+
+task generatePom {
+    doLast {
+        pom {
+            project {
+                groupId project.group.toString()
+                artifactId artifactId
+                version version
+
+                inceptionYear '2018'
+                licenses {
+                    license {
+                        name 'MIT License'
+                        url 'MIT'
+                        distribution 'repo'
+                    }
+                }
+            }
+        }.writeTo("$buildDir/pom.xml")
     }
 }

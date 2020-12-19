@@ -15,6 +15,7 @@ repositories {
     mavenCentral()
 }
 
+apply plugin: 'maven'
 apply plugin: 'java'
 apply plugin: 'jacoco'
 apply plugin: 'eclipse'
@@ -110,3 +111,24 @@ bootJar {
 description = "Micro-service to retrieve up to date quotes"
 
 // task wrapper(type: Wrapper) { gradleVersion = '4.6' }
+
+task generatePom {
+    doLast {
+        pom {
+            project {
+                groupId project.group.toString()
+                artifactId artifactId
+                version version
+
+                inceptionYear '2018'
+                licenses {
+                    license {
+                        name 'MIT License'
+                        url 'MIT'
+                        distribution 'repo'
+                    }
+                }
+            }
+        }.writeTo("$buildDir/pom.xml")
+    }
+}
