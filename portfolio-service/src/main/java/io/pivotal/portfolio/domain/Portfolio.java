@@ -1,3 +1,4 @@
+
 package io.pivotal.portfolio.domain;
 
 import java.math.BigDecimal;
@@ -68,11 +69,17 @@ public class Portfolio {
 		this.currentTotalValue = BigDecimal.ZERO;
 		this.purchaseValue = BigDecimal.ZERO;
 		this.sellValue = BigDecimal.ZERO;
-		holdings.values().forEach(holding -> {
+
+		for (Holding holding: holdings.values()){
 			this.currentTotalValue = this.currentTotalValue.add(holding.getCurrentValue().multiply(new BigDecimal(holding.getQuantity())));
 			this.purchaseValue = this.purchaseValue.add(holding.getPurchaseValue());
 			this.sellValue = this.sellValue.add(holding.getSellValue());
-		});
+		}
+		// holdings.values().forEach(holding -> {
+		// 	this.currentTotalValue = this.currentTotalValue.add(holding.getCurrentValue().multiply(new BigDecimal(holding.getQuantity())));
+		// 	this.purchaseValue = this.purchaseValue.add(holding.getPurchaseValue());
+		// 	this.sellValue = this.sellValue.add(holding.getSellValue());
+		// });
 	}
 
 	public BigDecimal getSellValue() {

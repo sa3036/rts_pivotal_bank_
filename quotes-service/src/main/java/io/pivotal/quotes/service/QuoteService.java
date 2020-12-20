@@ -122,21 +122,32 @@ public class QuoteService {
 		final List<Quote> quotes = new ArrayList<>();
 
 		if(batchQuote != null) {
-			quotes.addAll(Arrays.asList(symbols.split(","))
-					.stream()
-					.map(symbol -> QuoteMapper.INSTANCE.mapFromIexQuote(batchQuote.get(symbol).get("quote")))
-					.collect(Collectors.toList()));
+			String[] parts = symbols.split(",");
+			for (String part: parts){
+				quotes.add (QuoteMapper.INSTANCE.mapFromIexQuote(batchQuote.get(part).get("quote")));
+			}
+
+			// quotes.addAll(Arrays.asList(symbols.split(","))
+			// 		.stream()
+			// 		.map(symbol -> QuoteMapper.INSTANCE.mapFromIexQuote(batchQuote.get(symbol).get("quote")))
+			// 		.collect(Collectors.toList()));
 		} else {
 			log.warn("Quote lookup returned a null array of quotes");
 			String[] parts = symbols.split(",");
-			Arrays.stream(parts).forEach(
-					symbol -> {
-						Quote quote = new Quote();
-						quote.setSymbol(symbol);
+			for (String part: parts){
+				Quote quote = new Quote();
+						quote.setSymbol(part);
 						quote.setStatus("FAILED");
 						quotes.add(quote);
-					}
-			);
+			}
+			// Arrays.stream(parts).forEach(
+			// 		symbol -> {
+			// 			Quote quote = new Quote();
+			// 			quote.setSymbol(symbol);
+			// 			quote.setStatus("FAILED");
+			// 			quotes.add(quote);
+			// 		}
+			// );
 		}
 
 		return quotes;
