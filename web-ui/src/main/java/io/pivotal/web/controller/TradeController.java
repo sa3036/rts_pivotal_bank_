@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+import java.util.Set;
+import java.util.HashSet;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -141,17 +143,36 @@ public class TradeController {
 		 */
 		//get distinct companyinfos and get their respective quotes in parallel.
 
-		List<String> symbols = companies.stream().map(company -> company.getSymbol()).collect(Collectors.toList());
-		logger.debug("symbols: fetching "+ symbols.size() + " quotes for following symbols: " + symbols);
-		List<String> distinctsymbols = symbols.stream().distinct().collect(Collectors.toList());
+		// List<String> symbols = companies.stream().map(company -> company.getSymbol()).collect(Collectors.toList());
+		List<String> symbols = new ArrayList();
+
+		for (CompanyInfo company : companies){
+			symbols.add(company.getSymbol());
+		}
+
+		// logger.debug("symbols: fetching "+ symbols.size() + " quotes for following symbols: " + symbols);
+		// List<String> distinctsymbols = symbols.stream().distinct().collect(Collectors.toList());
+		Set<String> distinctsymbols = new HashSet();
+		for (CompanyInfo company : companies){
+			distinctsymbols.add(company.getSymbol());
+		}
+		
 		logger.debug("distinct: fetching "+ distinctsymbols.size() + " quotes for following symbols: " + distinctsymbols);
 		List<Quote> quotes;
 		if (distinctsymbols.size() > 0) {
-			quotes = marketService.getMultipleQuotes(distinctsymbols)
-					.stream()
-					.distinct()
-					.filter(quote -> quote.getName() != null && !"".equals(quote.getName()) && "SUCCESS".equals(quote.getStatus()))
-					.collect(Collectors.toList());
+			// quotes = marketService.getMultipleQuotes(distinctsymbols)
+			// 		.stream()
+			// 		.distinct()
+			// 		.filter(quote -> quote.getName() != null && !"".equals(quote.getName()) && "SUCCESS".equals(quote.getStatus()))
+			// 		.collect(Collectors.toList());
+			
+			quotes = marketService.getMultipleQuotes(distinctsymbols);
+			for (Quote quote: quotes){
+				if (quote.getName() != null && !"".equals(quote.getName() && "SUCCESS".equals(quote.getStatus()))){
+					quotes.add(quote);
+				}
+			}
+			// quotes = marketService.getMultipleQuotes(distinctsymbols).stream().distinct().filter(quote -> quote.getName() != null && !"".equals(quote.getName())).collect(Collectors.toList());
 		} else {
 			quotes = new ArrayList<>();
 		}

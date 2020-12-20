@@ -37,15 +37,14 @@ public class QuoteService {
 	public static final String FMT = "json";
 
 	/*
-         * cannot autowire as don't want ribbon here.
+	 * cannot autowire as don't want ribbon here.
 	 */
 	private RestTemplate restTemplate = new RestTemplate();
 
 	/**
 	 * Retrieves an up to date quote for the given symbol.
 	 * 
-	 * @param symbol
-	 *            The symbol to retrieve the quote for.
+	 * @param symbol The symbol to retrieve the quote for.
 	 * @return The quote object or null if not found.
 	 * @throws SymbolNotFoundException
 	 */
@@ -65,16 +64,13 @@ public class QuoteService {
 
 		log.debug("QuoteService.getQuote: retrieved quote: " + quote);
 
-
 		return QuoteMapper.INSTANCE.mapFromIexQuote(quote);
 
 	}
 
 	@SuppressWarnings("unused")
-	private Quote getQuoteFallback(String symbol)
-			throws SymbolNotFoundException {
-		log.debug("QuoteService.getQuoteFallback: circuit opened for symbol: "
-				+ symbol);
+	private Quote getQuoteFallback(String symbol) throws SymbolNotFoundException {
+		log.debug("QuoteService.getQuoteFallback: circuit opened for symbol: " + symbol);
 		Quote quote = new Quote();
 		quote.setSymbol(symbol);
 		quote.setStatus("FAILED");
@@ -83,34 +79,27 @@ public class QuoteService {
 
 	/**
 	 * Retrieves a list of CompanyInfor objects. Given the name parameters, the
-	 * return list will contain objects that match the search both on company
-	 * name as well as symbol.
+	 * return list will contain objects that match the search both on company name
+	 * as well as symbol.
 	 * 
-	 * @param name
-	 *            The search parameter for company name or symbol.
+	 * @param name The search parameter for company name or symbol.
 	 * @return The list of company information.
 	 */
-	@HystrixCommand(fallbackMethod = "getCompanyInfoFallback",
-		    commandProperties = {
-		      @HystrixProperty(name="execution.timeout.enabled", value="false")
-		    })
+	@HystrixCommand(fallbackMethod = "getCompanyInfoFallback", commandProperties = {
+			@HystrixProperty(name = "execution.timeout.enabled", value = "false") })
 	public List<CompanyInfo> getCompanyInfo(String name) {
-		log.debug("QuoteService.getCompanyInfo: retrieving info for: "
-				+ name);
+		log.debug("QuoteService.getCompanyInfo: retrieving info for: " + name);
 		Map<String, String> params = new HashMap<String, String>();
 		params.put("name", name);
-		CompanyInfo[] companies = restTemplate.getForObject(company_url,
-				CompanyInfo[].class, params);
-		log.debug("QuoteService.getCompanyInfo: retrieved info: "
-				+ companies);
+		CompanyInfo[] companies = restTemplate.getForObject(company_url, CompanyInfo[].class, params);
+		log.debug("QuoteService.getCompanyInfo: retrieved info: " + companies);
 		return Arrays.asList(companies);
 	}
 
 	/**
 	 * Retrieve multiple quotes at once.
 	 * 
-	 * @param symbols
-	 *            comma delimeted list of symbols.
+	 * @param symbols comma delimeted list of symbols.
 	 * @return a list of quotes.
 	 */
 	public List<Quote> getQuotes(String symbols) {
@@ -121,8 +110,10 @@ public class QuoteService {
 		log.debug("Got response: " + batchQuotes);
 		final List<Quote> quotes = new ArrayList<>();
 
-		Arrays.asList(symbols.split(",")).forEach(symbol -> {
-			if(batchQuotes.containsKey(symbol)) {
+		// Arrays.asList(symbols.split(",")).forEach(symbol -> {
+		String[] parts = symbols.split(",");
+		for (String symbol : parts) {
+			if (batchQuotes.containsKey(symbol)) {
 				quotes.add(QuoteMapper.INSTANCE.mapFromIexQuote(batchQuotes.get(symbol).get("quote")));
 			} else {
 				log.warn("Quote could not be found for the following symbol: " + symbol);
@@ -131,17 +122,15 @@ public class QuoteService {
 				quote.setStatus("FAILED");
 				quotes.add(quote);
 			}
-		});
+		}
+		// });
 
 		return quotes;
 	}
 
-
 	@SuppressWarnings("unused")
-	private List<CompanyInfo> getCompanyInfoFallback(String symbol)
-			throws SymbolNotFoundException {
-		log.debug("QuoteService.getCompanyInfoFallback: circuit opened for symbol: "
-				+ symbol);
+	private List<CompanyInfo> getCompanyInfoFallback(String symbol) throws SymbolNotFoundException {
+		log.debug("QuoteService.getCompanyInfoFallback: circuit opened for symbol: " + symbol);
 		List<CompanyInfo> companies = new ArrayList<>();
 		return companies;
 	}

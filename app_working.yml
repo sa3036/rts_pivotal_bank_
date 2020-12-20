@@ -31,12 +31,8 @@ spec:
   selector:
     app: users-service
   ports:
-  - name: spring-boot 
-    port: 8080
+  - port: 8080
     targetPort: 8080
-  - name: jacoco 
-    port: 6300
-    targetPort: 6300
 
 ---
 
@@ -73,12 +69,8 @@ spec:
   selector:
     app: accounts-service
   ports:
-  - name: spring-boot 
-    port: 8080
+  - port: 8080
     targetPort: 8080
-  - name: jacoco 
-    port: 6300
-    targetPort: 6300
 
 ---
 apiVersion: apps/v1
@@ -113,12 +105,8 @@ spec:
   selector:
     app: quotes-service
   ports:
-  - name: spring-boot 
-    port: 8080
+  - port: 8080
     targetPort: 8080
-  - name: jacoco 
-    port: 6300
-    targetPort: 6300
 
 ---
 
@@ -161,12 +149,8 @@ spec:
   selector:
     app: portfolio-service
   ports:
-  - name: spring-boot 
-    port: 8080
+  - port: 8080
     targetPort: 8080
-  - name: jacoco 
-    port: 6300
-    targetPort: 6300
 
 ---
 apiVersion: apps/v1
@@ -202,10 +186,6 @@ spec:
     app: web-ui-service
   type: NodePort
   ports:
-    - name: spring-boot 
-      nodePort: 32001
+    - nodePort: 32001
       port: 8080
       targetPort: 8080
-    - name: jacoco 
-      port: 6300
-      targetPort: 6300
