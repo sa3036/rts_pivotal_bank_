@@ -168,7 +168,7 @@ public class TradeController {
 			
 			quotes = marketService.getMultipleQuotes(distinctsymbols);
 			for (Quote quote: quotes){
-				if (quote.getName() != null && !"".equals(quote.getName() && "SUCCESS".equals(quote.getStatus()))){
+				if (quote.getName() != null && !"".equals(quote.getName()) && "SUCCESS".equals(quote.getStatus())){
 					quotes.add(quote);
 				}
 			}
