@@ -4,6 +4,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -58,9 +61,11 @@ public class User implements Serializable {
 	@Column(name = "authtoken", length = 100)
     private String authtoken;
 
+	// @Column(name = "creationdate")
+	// @Temporal(TemporalType.TIMESTAMP)
+	// @DateTimeFormat(style = "LL")
 	@Column(name = "creationdate")
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(style = "LL")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss")
     private Date creationdate;
 
 	@Column(name = "logoutcount")
@@ -69,8 +74,9 @@ public class User implements Serializable {
 
 
 	@Column(name = "lastlogin")
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(style = "LL")
+	// @Temporal(TemporalType.TIMESTAMP)
+	// @DateTimeFormat(style = "LL")
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd'T'HH:mm:ss")
     private Date lastlogin;
 
 	@Column(name = "logincount")
